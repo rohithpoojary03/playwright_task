@@ -97,84 +97,141 @@
       display: block;
       margin-top: 10px;
     }
+
+    .container {
+      padding: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .image-wrapper {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .nav-wrapper {
+      padding: 10px 0;
+    }
+
+    .help-content {
+      padding: 10px;
+      background: #f9fafb;
+      border-radius: 4px;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
 
   <!-- getByRole (banner) -->
   <header>
-    <h1>Playwright Locator Practice App</h1>
-    <p>Practice all Playwright locators on one page</p>
+    <div class="header-content">
+      <h1>Playwright Locator Practice App</h1>
+      <p>Practice all Playwright locators on one page</p>
+    </div>
   </header>
 
   <main>
+    <div class="container">
 
-    <!-- getByRole (navigation) + getByRole (link) -->
-    <section>
-      <h2>User Navigation</h2>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#register">Register</a>
-        <a href="#login">Login</a>
-      </nav>
-    </section>
+      <!-- getByRole (navigation) + getByRole (link) -->
+      <section>
+        <h2>User Navigation</h2>
+        <div class="nav-wrapper">
+          <nav>
+            <a href="#home">Home</a>
+            <a href="#register">Register</a>
+            <a href="#login">Login</a>
+          </nav>
+        </div>
+      </section>
 
-    <!-- getByAltText -->
-    <section>
-      <h2>Company Branding</h2>
-      <img
-        src="https://via.placeholder.com/140x60?text=Logo"
-        alt="Playwright Company Logo"
-        width="140"
-        height="60"
-      />
-    </section>
+      <!-- getByAltText -->
+      <section>
+        <h2>Company Branding</h2>
+        <div class="image-wrapper">
+          <img
+            src="./playwrightimage.png"
+            alt="Playwright Company Logo"
+            width="140"
+            height="60"
+          />
+        </div>
+      </section>
 
-    <!-- getByLabel + getByPlaceholder -->
-    <section>
-      <h2>User Registration</h2>
+      <!-- getByLabel + getByPlaceholder -->
+      <section>
+        <h2>User Registration</h2>
 
-      <form>
-        <label for="fname">First name:</label>
-        <input id="fname" type="text" placeholder="Enter first name" />
+        <form>
+          <div class="form-group">
+            <label for="fname">First name:</label>
+            <input id="fname" type="text" placeholder="Enter first name" />
+          </div>
 
-        <label for="lname">Last name:</label>
-        <input id="lname" type="text" placeholder="Enter last name" />
+          <div class="form-group">
+            <label for="lname">Last name:</label>
+            <input id="lname" type="text" placeholder="Enter last name" />
+          </div>
 
-        <label for="email">Email:</label>
-        <input id="email" type="email" placeholder="Enter email address" />
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input id="email" type="email" placeholder="Enter email address" />
+          </div>
 
-        <label for="country">Country:</label>
-        <select id="country">
-          <option value="">Select a country</option>
-          <option value="india">India</option>
-          <option value="usa">USA</option>
-          <option value="uk">UK</option>
-        </select>
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country">
+              <option value="">Select a country</option>
+              <option value="india">India</option>
+              <option value="usa">USA</option>
+              <option value="uk">UK</option>
+            </select>
+          </div>
 
-        <button type="submit">Create Account</button>
-      </form>
-    </section>
+          <div class="form-group">
+            <button type="submit">Create Account</button>
+          </div>
+        </form>
+      </section>
 
-    <!-- getByTitle -->
-    <section>
-      <h2>Help Section</h2>
-      <span title="Click here to get help">Need Help?</span>
-    </section>
+      <!-- getByTitle -->
+      <section>
+        <h2>Help Section</h2>
+        <div class="help-content">
+          <span title="Click here to get help">Need Help?</span>
+        </div>
+      </section>
 
-    <!-- getByTestId -->
-    <section>
-      <h2>User Dashboard</h2>
-      <div class="card" data-testid="dashboard-card">
-        Welcome back, User!
-      </div>
-    </section>
+      <!-- getByTestId -->
+      <section>
+        <h2>User Dashboard</h2>
+        <div class="card" data-testid="dashboard-card">
+          <div data-testid="welcome-message">
+            Welcome back, User!
+          </div>
+        </div>
+      </section>
 
+    </div>
   </main>
 
   <!-- getByRole (contentinfo) -->
   <footer>
-    © 2026 Playwright Practice App
+    <div class="footer-content">
+      © 2026 Playwright Practice App
+    </div>
   </footer>
 
 </body>

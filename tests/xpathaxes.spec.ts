@@ -38,7 +38,7 @@
 //self axis selects the current node itself.
 //example: /bookstore/book/self::book
 
-import {test,expect} from '@playwright/test';
+import {test,expect,Locator} from '@playwright/test';
 
 test("xpath axes demo",async ({page})=>{
     await page.goto("https://www.w3schools.com/html/html_tables.asp");

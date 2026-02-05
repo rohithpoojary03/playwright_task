@@ -1,3 +1,4 @@
 {
-  "liveServer.settings.root": "/tests"
+  "liveServer.settings.root": "/tests",
+  "git.ignoreLimitWarning": true
 }

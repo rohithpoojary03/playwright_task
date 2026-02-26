@@ -34,10 +34,18 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+  {
+    name: 'chromium',
+    use: {
+      browserName: 'chromium',
+      headless: false,
+      viewport: null,
+      launchOptions: {
+        args: ['--start-maximized']
+      }
     },
+  },
+
 
     /*{
       name: 'firefox',

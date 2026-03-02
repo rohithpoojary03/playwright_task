@@ -13,6 +13,12 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+
+  //set the maximum time one test can run for global level
+  //timeout: 60000,
+
+//set the maximum time for each assertion to be met global level
+//expect: {timeout: 60000},
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

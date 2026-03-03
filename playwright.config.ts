@@ -15,27 +15,41 @@ export default defineConfig({
   testDir: './tests',
 
   //set the maximum time one test can run for global level
-  //timeout: 60000,
+  //timeout: 60000, //done by rohith 
 
 //set the maximum time for each assertion to be met global level
-//expect: {timeout: 60000},
+//expect: {timeout: 60000},//done by rohith 
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
+
+
+  //retry locally for all tests
+  //retries: 3,  //done by rohith 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
+    video:'retain-on-failure', //record video only on failure
+    //video:'retain-on-failure', //record video for all tests
+    //video:'off', //disable video recording
+
+//to take screenshot globally for all tests //done by rohith  
+    //screenshot:'only-on-failure', //take screenshot only on failure
+    //screenshot: 'only-on-failure', //take screenshot only on failure
+    //screenshot: 'on', //take screenshot on every test
+    //screenshot: 'on-first-failure', //take screenshot on first retry
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-    //viewport: { width: 1280, height: 720 },
+    //viewport: { width: 1280, height: 720 }, //done by rohith 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'off',
   },
 
   /* Configure projects for major browsers */

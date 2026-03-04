@@ -17,10 +17,14 @@ export default defineConfig({
   //set the maximum time one test can run for global level
   //timeout: 60000, //done by rohith 
 
+//grep:/@sanity/  //done by rohith
+
 //set the maximum time for each assertion to be met global level
 //expect: {timeout: 60000},//done by rohith 
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false, //done by rohith
+  //run test in serial mode
+  //fullyparallel: false, //done by rohith
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -36,7 +40,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
 
-    video:'retain-on-failure', //record video only on failure
+    video:'off', //record video only on failure
     //video:'retain-on-failure', //record video for all tests
     //video:'off', //disable video recording
 

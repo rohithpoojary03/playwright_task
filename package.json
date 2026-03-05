@@ -13,6 +13,7 @@
     "@types/node": "^25.0.10"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.11.1",
     "highlight.js": "^11.11.1",
     "pdfkit": "^0.17.2"
   }

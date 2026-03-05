@@ -22,19 +22,20 @@ export default defineConfig({
 //set the maximum time for each assertion to be met global level
 //expect: {timeout: 60000},//done by rohith 
   /* Run tests in files in parallel */
-  fullyParallel: false, //done by rohith
+  fullyParallel: true, //done by rohith
   //run test in serial mode
   //fullyparallel: false, //done by rohith
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 0, 
 
 
   //retry locally for all tests
   //retries: 3,  //done by rohith 
-  /* Opt out of parallel tests on CI. */
+  /* Opt out of parallel tests on CI. */ //workers
   workers: process.env.CI ? 1 : undefined,
+  //workers:2, //done by rohith 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -58,7 +59,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-  {
+  {  //fullyParallel: true, //done by rohith
     name: 'chromium',
     use: {
       browserName: 'chromium',
@@ -66,6 +67,7 @@ export default defineConfig({
       viewport: null,
       launchOptions: {
         args: ['--start-maximized']
+        
       }
     },
   },

@@ -1,0 +1,92 @@
+<testsuites id="" name="" tests="6" failures="2" skipped="0" errors="0" time="14.044527">
+<testsuite name="allurereport.spec.ts" timestamp="2026-03-08T09:29:26.203Z" hostname="chromium" tests="3" failures="1" skipped="0" time="26.112" errors="0">
+<testcase name="logotest" classname="allurereport.spec.ts" time="8.358">
+</testcase>
+<testcase name="title test" classname="allurereport.spec.ts" time="8.254">
+<failure message="allurereport.spec.ts:28:5 title test" type="FAILURE">
+<![CDATA[  [chromium] › allurereport.spec.ts:28:5 › title test ──────────────────────────────────────────────
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "Demo Web Shop1"
+    Received string:    "Demo Web Shop"
+
+      27 |
+      28 | test('title test', async ({ page }) => {
+    > 29 |   expect(await page.title()).toContain("Demo Web Shop1");
+         |                              ^
+      30 | });
+      31 |
+      32 | test('search test', async ({ page }) => {
+        at C:\Automation\playwright\tests\allurereport.spec.ts:29:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\allurereport-title-test-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\allurereport-title-test-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\allurereport-title-test-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\allurereport-title-test-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\allurereport-title-test-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\allurereport-title-test-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="search test" classname="allurereport.spec.ts" time="9.5">
+</testcase>
+</testsuite>
+<testsuite name="allurereport.spec.ts" timestamp="2026-03-08T09:29:26.203Z" hostname="Microsoft Edge" tests="3" failures="1" skipped="0" time="24.507" errors="0">
+<testcase name="logotest" classname="allurereport.spec.ts" time="7.975">
+</testcase>
+<testcase name="title test" classname="allurereport.spec.ts" time="7.951">
+<failure message="allurereport.spec.ts:28:5 title test" type="FAILURE">
+<![CDATA[  [Microsoft Edge] › allurereport.spec.ts:28:5 › title test ────────────────────────────────────────
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "Demo Web Shop1"
+    Received string:    "Demo Web Shop"
+
+      27 |
+      28 | test('title test', async ({ page }) => {
+    > 29 |   expect(await page.title()).toContain("Demo Web Shop1");
+         |                              ^
+      30 | });
+      31 |
+      32 | test('search test', async ({ page }) => {
+        at C:\Automation\playwright\tests\allurereport.spec.ts:29:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\allurereport-title-test-Microsoft-Edge\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\allurereport-title-test-Microsoft-Edge\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\allurereport-title-test-Microsoft-Edge\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\allurereport-title-test-Microsoft-Edge\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\allurereport-title-test-Microsoft-Edge\video.webm]]
+
+[[ATTACHMENT|test-results\allurereport-title-test-Microsoft-Edge\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="search test" classname="allurereport.spec.ts" time="8.581">
+</testcase>
+</testsuite>
+</testsuites>

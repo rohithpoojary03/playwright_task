@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","8254","title test","chromium","2026-03-08","failed","2026-03-08","","allurereport.spec.ts","",""
+"","8358","logotest","chromium","2026-03-08","passed","2026-03-08","","allurereport.spec.ts","",""
+"","8581","search test","Microsoft Edge","2026-03-08","passed","2026-03-08","","allurereport.spec.ts","",""
+"","7975","logotest","Microsoft Edge","2026-03-08","passed","2026-03-08","","allurereport.spec.ts","",""
+"","7951","title test","Microsoft Edge","2026-03-08","failed","2026-03-08","","allurereport.spec.ts","",""
+"","9500","search test","chromium","2026-03-08","passed","2026-03-08","","allurereport.spec.ts","",""

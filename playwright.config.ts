@@ -38,6 +38,25 @@ export default defineConfig({
   //workers:2, //done by rohith 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
+  //reporter:[['html',{open:'always','outputFolder':'html-report'}]], //done by rohith
+  //reporter:[['html',{open:'always','outputFolder':'html-report'}],['list']],  //done by rohith
+  //reporter:[['html',{open:'always','outputFolder':'html-report'}],['list'],['line']],  //done by rohith
+  //reporter:[['html',{open:'always','outputFolder':'html-report'}],['list'],['line'],['dot']],  //done by rohith
+  /*reporter:[['html',{open:'always','outputFolder':'html-report'}],  //done by rohith
+                   ['list'],['line'],
+                   ['dot'],['junit',{outputFile:'junit.xml'}],
+                   ['json',{outputFile:'result.json'}]],*/  //done by rohith
+
+/*reporter:[['html',{open:'always','outputFolder':'html-report'}],
+                   ['list'],['line'],
+                   ['dot'],['junit',{outputFile:'junit.xml'}],
+                   ['json',{outputFile:'result.json'}]
+                   ,['allure-playwright']],*/  ////done by rohith
+
+
+// custom reporter
+/*reporter:[['html',{open:'always','outputFolder':'html-report'}],
+         ['./mycustomreport.ts']],*/ ////done by rohith
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
 
@@ -48,7 +67,7 @@ export default defineConfig({
 //to take screenshot globally for all tests //done by rohith  
     //screenshot:'only-on-failure', //take screenshot only on failure
     //screenshot: 'only-on-failure', //take screenshot only on failure
-    //screenshot: 'on', //take screenshot on every test
+    screenshot: 'off', //take screenshot on every test
     //screenshot: 'on-first-failure', //take screenshot on first retry
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
@@ -71,7 +90,10 @@ export default defineConfig({
       }
     },
   },
-
+    {
+     name: 'Microsoft Edge',
+      use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    },
 
     /*{
       name: 'firefox',

@@ -90,10 +90,10 @@ export default defineConfig({
       }
     },
   },
-    {
+    /*{
      name: 'Microsoft Edge',
       use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
+    },*/
 
     /*{
       name: 'firefox',

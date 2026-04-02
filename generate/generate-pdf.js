@@ -4,12 +4,14 @@ const PDFDocument = require('pdfkit');
 
 // Paths
 const testsFolder = path.join(__dirname, '..', 'tests');
+const pagesFolder = path.join(__dirname, '..', 'pages');
 const outputFile = path.join(__dirname, '..', 'PlaywrightTests.pdf');
 
 // Fonts
 const timesFontPath = 'C:/Windows/Fonts/times.ttf';
 const timesBoldPath = 'C:/Windows/Fonts/timesbd.ttf';
 
+// Create PDF
 const doc = new PDFDocument({
   margin: 50,
   size: 'A4'
@@ -20,10 +22,32 @@ doc.pipe(fs.createWriteStream(outputFile));
 doc.registerFont('Times', timesFontPath);
 doc.registerFont('Times-Bold', timesBoldPath);
 
-// Get files
-const files = fs.readdirSync(testsFolder)
+// ---------------- GET FILES ----------------
+
+// Page files (.ts)
+const pageFiles = fs.readdirSync(pagesFolder)
+  .filter(file => file.endsWith('.ts'))
+  .map(file => ({
+    name: file,
+    path: path.join(pagesFolder, file),
+    type: 'Page'
+  }));
+
+// Test files (.spec.ts)
+const testFiles = fs.readdirSync(testsFolder)
   .filter(file => file.endsWith('.spec.ts'))
-  .sort();
+  .map(file => ({
+    name: file,
+    path: path.join(testsFolder, file),
+    type: 'Test'
+  }));
+
+// Sort individually
+pageFiles.sort((a, b) => a.name.localeCompare(b.name));
+testFiles.sort((a, b) => a.name.localeCompare(b.name));
+
+// Combine → Pages FIRST, then Tests
+const files = [...pageFiles, ...testFiles];
 
 const totalFiles = files.length;
 
@@ -36,7 +60,7 @@ doc.moveDown(1);
 
 doc.font('Times')
    .fontSize(14)
-   .text(`Total Spec Files: ${totalFiles}`, { align: 'center' });
+   .text(`Total Files: ${totalFiles}`, { align: 'center' });
 
 doc.addPage();
 
@@ -53,7 +77,7 @@ files.forEach((file, index) => {
   doc.font('Times')
      .fontSize(12)
      .fillColor('blue')
-     .text(`${index + 1}. ${file}`, {
+     .text(`${index + 1}. [${file.type}] ${file.name}`, {
         goTo: destination,
         underline: true
      });
@@ -66,9 +90,7 @@ doc.fillColor('black');
 // ---------------- FILE CONTENT ----------------
 files.forEach((file, index) => {
 
-  const filePath = path.join(testsFolder, file);
-
-  const content = fs.readFileSync(filePath, 'utf8')
+  const content = fs.readFileSync(file.path, 'utf8')
     .replace(/\r\n/g, '\n')
     .replace(/\r/g, '\n');
 
@@ -80,7 +102,7 @@ files.forEach((file, index) => {
   // Header
   doc.font('Times-Bold')
      .fontSize(14)
-     .text(`${index + 1}. File: ${file}`, { underline: true });
+     .text(`${index + 1}. [${file.type}] File: ${file.name}`, { underline: true });
 
   doc.moveDown(1);
 
@@ -96,7 +118,7 @@ files.forEach((file, index) => {
 
 doc.end();
 
-console.log('✅ PDF Generated with Index & Clickable Links');
+console.log('✅ PDF Generated: Pages first, then Tests with Index Links');
 
 
 //to execute this script, 

@@ -22,36 +22,49 @@ doc.pipe(fs.createWriteStream(outputFile));
 doc.registerFont('Times', timesFontPath);
 doc.registerFont('Times-Bold', timesBoldPath);
 
+// ---------------- RECURSIVE FUNCTION ----------------
+
+function getAllFiles(dir, extension, type, baseFolder) {
+  let results = [];
+
+  const list = fs.readdirSync(dir);
+
+  list.forEach(file => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory()) {
+      results = results.concat(getAllFiles(filePath, extension, type, baseFolder));
+    } else if (file.endsWith(extension)) {
+      results.push({
+        name: path.relative(baseFolder, filePath), // shows folder structure
+        path: filePath,
+        type: type
+      });
+    }
+  });
+
+  return results;
+}
+
 // ---------------- GET FILES ----------------
 
-// Page files (.ts)
-const pageFiles = fs.readdirSync(pagesFolder)
-  .filter(file => file.endsWith('.ts'))
-  .map(file => ({
-    name: file,
-    path: path.join(pagesFolder, file),
-    type: 'Page'
-  }));
+// Pages
+const pageFiles = getAllFiles(pagesFolder, '.ts', 'Page', pagesFolder);
 
-// Test files (.spec.ts)
-const testFiles = fs.readdirSync(testsFolder)
-  .filter(file => file.endsWith('.spec.ts'))
-  .map(file => ({
-    name: file,
-    path: path.join(testsFolder, file),
-    type: 'Test'
-  }));
+// Tests (recursive → includes apitests)
+const testFiles = getAllFiles(testsFolder, '.spec.ts', 'Test', testsFolder);
 
-// Sort individually
+// Sort
 pageFiles.sort((a, b) => a.name.localeCompare(b.name));
 testFiles.sort((a, b) => a.name.localeCompare(b.name));
 
 // Combine → Pages FIRST, then Tests
 const files = [...pageFiles, ...testFiles];
-
 const totalFiles = files.length;
 
 // ---------------- TITLE PAGE ----------------
+
 doc.font('Times-Bold')
    .fontSize(20)
    .text('Playwright Automation Test Scripts', { align: 'center' });
@@ -65,6 +78,7 @@ doc.font('Times')
 doc.addPage();
 
 // ---------------- INDEX PAGE ----------------
+
 doc.font('Times-Bold')
    .fontSize(18)
    .text('Index', { underline: true });
@@ -88,6 +102,7 @@ files.forEach((file, index) => {
 doc.fillColor('black');
 
 // ---------------- FILE CONTENT ----------------
+
 files.forEach((file, index) => {
 
   const content = fs.readFileSync(file.path, 'utf8')
@@ -116,10 +131,11 @@ files.forEach((file, index) => {
   });
 });
 
+// ---------------- FINISH ----------------
+
 doc.end();
 
-console.log('✅ PDF Generated: Pages first, then Tests with Index Links');
-
+console.log('✅ PDF Generated successfully with nested test files!');
 
 //to execute this script, 
 //run: node generate/generate-pdf.js

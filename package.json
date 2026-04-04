@@ -10,14 +10,17 @@
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.58.0",
-    "@types/node": "^25.0.10",
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^25.5.2",
     "allure-playwright": "^3.6.0"
   },
   "dependencies": {
     "@axe-core/playwright": "^4.11.1",
+    "@faker-js/faker": "^10.4.0",
     "csv-parse": "^6.1.0",
     "exceljs": "^4.4.0",
     "highlight.js": "^11.11.1",
+    "luxon": "^3.7.2",
     "pdfkit": "^0.17.2",
     "xlsx": "^0.18.5"
   }

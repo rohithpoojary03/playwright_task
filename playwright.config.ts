@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import process from 'process';
 
 /**
  * Read environment variables from file.
@@ -70,7 +71,9 @@ export default defineConfig({
     screenshot: 'off', //take screenshot on every test
     //screenshot: 'on-first-failure', //take screenshot on first retry
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://restful-booker.herokuapp.com', //done by rohith 
+
+
     //viewport: { width: 1280, height: 720 }, //done by rohith 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'off',

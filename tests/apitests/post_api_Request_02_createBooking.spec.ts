@@ -1,27 +1,19 @@
 /*
 Test:Create booking
 Request Type: POST
-Request body: static
+Request body: Json
 
 */
 
 import { test, expect } from '@playwright/test';
+import fs from 'fs';   
 
-test("create Post request using static body", async ({ request }) => {
+
+test("create Post request using Json body", async ({ request }) => {
    
-   //request body for creating booking
-    const requestBody = 
-   {
-    "firstname" : "Jim",
-    "lastname" : "Brown",
-    "totalprice" : 111,
-    "depositpaid" : true,
-    "bookingdates" : {
-        "checkin" : "2018-01-01",
-        "checkout" : "2019-01-01"
-    },
-    "additionalneeds" : "Breakfast"
-}
+   //read data from json file
+    const jsonFile="testdata/post-request-body.json";
+    const requestBody= JSON.parse(fs.readFileSync(jsonFile,'utf-8'));
 
 
 //send POST request to create booking
@@ -43,17 +35,17 @@ expect(responseBody.booking).toHaveProperty("additionalneeds");
 //validate the booking details in the response body
 const booking=responseBody.booking;
 expect(booking).toMatchObject({
-    "firstname" : "Jim",
-    "lastname" : "Brown",
-    "totalprice" : 111,
-    "depositpaid" : true,
-    "additionalneeds" : "Breakfast"
+    "firstname" : requestBody.firstname,
+    "lastname" : requestBody.lastname,
+    "totalprice" : requestBody.totalprice,
+    "depositpaid" : requestBody.depositpaid,
+    "additionalneeds" : requestBody.additionalneeds
 });
  
 //validate the booking dates in the response body
 expect(booking.bookingdates).toMatchObject({
-    "checkin" : "2018-01-01",
-    "checkout" : "2019-01-01"
+    "checkin" : requestBody.bookingdates.checkin,
+    "checkout" : requestBody.bookingdates.checkout
 });
 
 

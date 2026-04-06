@@ -29,11 +29,11 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0, 
+  //retries: process.env.CI ? 2 : 0, //done by rohith
 
 
   //retry locally for all tests
-  //retries: 3,  //done by rohith 
+    retries: 1,  //done by rohith 
   /* Opt out of parallel tests on CI. */ //workers
   workers: process.env.CI ? 1 : undefined,
   //workers:2, //done by rohith 

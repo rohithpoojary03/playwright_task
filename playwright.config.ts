@@ -71,7 +71,9 @@ export default defineConfig({
     screenshot: 'off', //take screenshot on every test
     //screenshot: 'on-first-failure', //take screenshot on first retry
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://restful-booker.herokuapp.com', //done by rohith 
+    
+    
+    //baseURL: 'https://restful-booker.herokuapp.com', //done by rohith 
 
 
     //viewport: { width: 1280, height: 720 }, //done by rohith 

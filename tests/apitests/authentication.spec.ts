@@ -97,3 +97,8 @@ test('API Key Auth - Header', async ({ request }) => {
   console.log(data);
 });
 
+/*“How do you handle API authentication securely?”
+
+Answer:
+
+“I use environment variables via dotenv and never commit secrets. I also rotate tokens if exposed.”*/
